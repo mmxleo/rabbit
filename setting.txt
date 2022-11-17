@@ -1,0 +1,4 @@
+
+# DRIVER_PATH = "chromedriver.exe"
+CHROME_PATH = r"C:\Users\Leo\AppData\Local\Google\Chrome\User Data\Default"  # 可透過網址列輸入 chrome://version/ 找到
+

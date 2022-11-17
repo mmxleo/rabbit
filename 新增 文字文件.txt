@@ -1,0 +1,62 @@
+import time,requests
+from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+options = webdriver.ChromeOptions()
+dreive=
+
+
+def login_acc():
+    driver.get("https://ecvip.pchome.com.tw/login/v3/login.htm?")  #前往登入頁面
+    WebDriverWait(driver, 20).until( #等待帳號輸入框加載完畢
+        expected_conditions.presence_of_element_located((By.ID, 'loginAcc'))
+    )
+    elem = driver.find_element(By.ID,'loginAcc') #尋找帳號輸入框
+    elem.clear()
+    elem.send_keys(loginAcc) #輸入帳號
+    elem = driver.find_element(By.ID,'loginPwd') #尋找密碼輸入框
+    elem.clear()
+    elem.send_keys(loginPwd) #輸入密碼
+    elem.send_keys(Keys.ENTER)
+    time.sleep(4)
+
+
+
+
+
+# if __name__ == "__main__":
+#     options = webdriver.ChromeOptions()
+#     options.add_argument(CHROME_PATH)
+#     # options.add_argument("--headless")  # 不開啟實體瀏覽器背景執行
+#     driver = webdriver.Chrome(
+#         executable_path='chromedriver.exe', chrome_options=options)
+#     driver.set_page_load_timeout(120)
+#     product_id = URL.split("/prod/")[1]
+#     if product_id.find("?") > -1:
+#         product_id = product_id.split("?")[0]
+#     # print(product_id)
+#     url = "https://24h.pchome.com.tw/prod/" + product_id 
+
+    #登入帳戶
+    login_acc()
+
+    driver.get(url)
+    flag = True
+    number = 0
+    while flag:
+        curr_time = time.strftime('%H_%M_%S')
+        if curr_time == '00_00_00':  # 請輸入開始搶購的時間(24時制)
+            while not get_products_sale_status():  # 預防pchome的時差
+                # print(number)
+                number += 1
+            print("開始運行腳本:")
+            try:
+                run_script()
+                flag = False
+            except Exception as e:
+                print(e)
+        else:
+            time.sleep(1)
+            print(curr_time)
