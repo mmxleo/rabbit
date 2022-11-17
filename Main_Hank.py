@@ -39,8 +39,8 @@ if __name__ == "__main__":
     accounttext.send_keys(acount)
     pwdtext.send_keys(pwd)
     loginbtn.click()
-    time1 = datetime.datetime.strptime('22:30:00', '%H:%M:%S') #打開卡使時間
-    time2 = datetime.datetime.strptime('23:55:00', '%H:%M:%S') #遲到時間
+    time1 = datetime.datetime.strptime('08:30:00', '%H:%M:%S') #打開卡使時間
+    time2 = datetime.datetime.strptime('09:30:00', '%H:%M:%S') #遲到時間
     while True :
         nowtime = datetime.datetime.strptime(datetime.datetime.now().strftime('%H:%M:%S'), '%H:%M:%S') #現在時間
         if nowtime >= time1 and nowtime <= time2:
