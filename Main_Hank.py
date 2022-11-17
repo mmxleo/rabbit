@@ -15,6 +15,7 @@ if __name__ == "__main__":
     webDriver = webdriver.Chrome(executable_path='chromedriver.exe')
     webDriver.implicitly_wait(120)
     webDriver.get(url)
+    webDriver.maximize_window()
     accounttext = webDriver.find_element(By.XPATH,'//*[@id="app"]/div[2]/div/div[2]/div[1]/div[2]/input')
     pwdtext = webDriver.find_element(By.XPATH,'//*[@id="app"]/div[2]/div/div[2]/div[2]/div[2]/input')
     loginbtn = webDriver.find_element(By.XPATH,'//*[@id="app"]/div[2]/div/div[2]/div[3]/button')
@@ -38,10 +39,8 @@ if __name__ == "__main__":
     accounttext.send_keys(acount)
     pwdtext.send_keys(pwd)
     loginbtn.click()
-    
-    time1 = datetime.datetime.strptime('08:30:00', '%H:%M:%S') #打開卡使時間
-    time2 = datetime.datetime.strptime('09:30:00', '%H:%M:%S') #遲到時間
-
+    time1 = datetime.datetime.strptime('22:30:00', '%H:%M:%S') #打開卡使時間
+    time2 = datetime.datetime.strptime('23:55:00', '%H:%M:%S') #遲到時間
     while True :
         nowtime = datetime.datetime.strptime(datetime.datetime.now().strftime('%H:%M:%S'), '%H:%M:%S') #現在時間
         if nowtime >= time1 and nowtime <= time2:
