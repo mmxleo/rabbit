@@ -2,13 +2,6 @@ import json,time,datetime,os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-def get_cookies(browser):
-    '''Get Cookies and save file'''
-    dictCookies = browser.get_cookies()
-    jsonCookies = json.dumps(dictCookies,indent=4,ensure_ascii=False)
-    with open('cookies.json','w') as f:
-        f.write(jsonCookies)
-
 if __name__ == "__main__":
     acount, pwd = input('input Account :'), input('input Pwd :')
     url = 'https://pro.104.com.tw/psc2'
@@ -26,14 +19,14 @@ if __name__ == "__main__":
         pwdtext.send_keys(pwd)
         loginbtn.click()
         time.sleep(90)
-        get_cookies(webDriver)
+        with open('cookies.json','w') as f:
+            f.write(json.dumps(webDriver.get_cookies(),indent=4,ensure_ascii=False))
         os._exit(0)
 
     # Add Cookies to webDriver
     with open('cookies.json','r') as f:
-        cookies = json.load(f)
-    for cookie in cookies:
-        webDriver.add_cookie(cookie)
+        for cookie in json.load(f):
+            webDriver.add_cookie(cookie)
 
     #帶 cookies 登入
     accounttext.send_keys(acount)
