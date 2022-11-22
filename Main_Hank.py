@@ -46,7 +46,7 @@ if __name__ == "__main__":
             status = 1
             condata['Punchin'] = nowtime.strftime('%H:%M:%S')
             with open(filePath,'w') as f :
-                f.write(condata)
+                f.write(json.dumps(condata,indent=4,ensure_ascii=False))
         if status != 2 and nowtime >= time3 and nowtime <= time4 :
             if not condata['Punchin'] or nowtime > datetime.datetime.strptime(condata['Punchin'],'%H:%M:%S')+datetime.timedelta(hours=9) :
                 webDriver.find_element(By.CLASS_NAME,'btn-block').click() #點擊打卡
